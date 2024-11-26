@@ -44,3 +44,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+// Function to show loader
+function showLoader() {
+    document.body.classList.add('loading');
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.add('active');
+    }
+}
+
+// Function to hide loader
+function hideLoader() {
+    document.body.classList.remove('loading');
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.classList.remove('active');
+    }
+}
+
+// Add click event listeners to all navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Only handle internal links (not external or hash links)
+            const href = this.getAttribute('href');
+            if (href.startsWith('http') || href.startsWith('#')) return;
+            
+            e.preventDefault();
+            showLoader();
+            
+            setTimeout(() => {
+                window.location.href = href;
+            }, 2000); // 2 second delay
+        });
+    });
+});
+
+// Hide loader when page loads
+window.addEventListener('load', function() {
+    hideLoader();
+});
+
+// Show loader initially
+showLoader();

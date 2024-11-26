@@ -9,7 +9,7 @@ nav {
     position: fixed;
     width: min(800px, 90%);
     padding: 15px 30px;
-    background: linear-gradient(135deg, #1a662c 0%, #158c69 100%);
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     backdrop-filter: blur(10px);
     z-index: 100;
     display: flex;
@@ -158,6 +158,9 @@ nav:hover {
     margin-top: -100px;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
 }
 
 /* Slideshow container */
@@ -385,4 +388,316 @@ nav:hover {
 /* Update X (formerly Twitter) styles */
 .x .icon {
     background: #000000;
+}
+
+/* Loading screen styles */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.loader.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto 20px;
+}
+
+.loader p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Prevent scrolling when loader is active */
+body.loading {
+    overflow: hidden;
+}
+
+/* Common styles for both Coming Soon pages */
+.coming-soon-container,
+.about-coming-soon {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a662c 0%, #158c69 100%);
+    padding: 120px 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Skills page specific styles */
+.coming-soon-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+.coming-soon-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+.coming-soon-content h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.coming-soon-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    width: 30%;
+    border-radius: 3px;
+    animation: progress 2s ease-in-out infinite;
+}
+
+/* About page specific styles */
+.about-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-icon {
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.about-content h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-coming-soon-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.about-loader {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.circle:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes progress {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .coming-soon-content h1,
+    .about-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .coming-soon-text,
+    .about-coming-soon-text {
+        font-size: 1.2rem;
+    }
+    
+    .coming-soon-content,
+    .about-content {
+        padding: 30px;
+    }
+    
+    .coming-soon-icon,
+    .about-icon {
+        font-size: 3.5rem;
+    }
+}
+
+/* Skills Progress Section */
+.skills-progress {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skills-progress h2 {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-3px);
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.2);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    transition: width 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .skills-progress h2 {
+        font-size: 2rem;
+    }
+    
+    .skill-info {
+        font-size: 1rem;
+    }
+    
+    .skill-item {
+        padding: 15px;
+    }
 }

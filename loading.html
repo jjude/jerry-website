@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loader active">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            // Get the redirect URL from the query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectTo = urlParams.get('to');
+            
+            // Redirect to the specified page
+            window.location.href = redirectTo || 'index.html';
+        }, 2000);
+    </script>
+</body>
+</html>
